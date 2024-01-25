@@ -1,0 +1,234 @@
+body {
+    margin: 0;
+}
+.mb-4 {
+    margin-bottom: 1rem;
+}
+.block {
+    display: block;
+}
+.field-name {
+    display: block;
+}
+.input {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    width: 500px;
+}
+#main {
+    margin: 0 10rem;
+    display: flex;
+    justify-content: space-between;
+}
+.required:after {
+    content: " *";
+    color: red;
+}
+.button {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    padding: 0.5rem 1rem;
+    background-color: rgb(30, 66, 159);
+    color: rgb(255, 255, 255);
+}
+/* The popup form - hidden by default */
+.form-popup {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    left: 0;
+    border: 3px solid #f1f1f1;
+    z-index: 9;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 255, 0.5);
+}
+
+#form1 {
+    width: 672px;
+    height: 350px;
+    border-radius: 10px;
+}
+
+/* Add styles to the form container */
+.form-container {
+    margin-left: 500px;
+    max-width: 800px;
+    padding: 10px;
+    background-color: white;
+    opacity: 1;
+    justify-self: center;
+    align-self: center;
+}
+
+/* Full-width input fields */
+.form-container input[type="text"],
+.form-container input[type="password"] {
+    width: 95%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type="text"]:focus,
+.form-container input[type="password"]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+    background-color: #04aa6d;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+    background-color: rgb(30, 66, 159);
+    border-radius: 10px;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover,
+.open-button:hover {
+    opacity: 1;
+}
+#message {
+    display: none;
+    color: red;
+    position: relative;
+    margin-top: 10px;
+}
+.form-container1 {
+    max-width: 800px;
+    padding: 10px;
+    background-color: white;
+    opacity: 1;
+    justify-self: center;
+    align-self: center;
+}
+#message1 {
+    display: none;
+    color: red;
+    position: relative;
+    margin-top: 10px;
+}
+.top-header {
+    padding: 0.5rem;
+    background-color: rgb(53 87 151 / var(--tw-bg-opacity));
+    --tw-bg-opacity: 1;
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+.img {
+    width: 92px;
+    height: 35px;
+}
+.object-cover {
+    width: 100%;
+    height: 100%;
+}
+.flex {
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+}
+.search {
+    width: 320px;
+    height: 35px;
+}
+.sider-bar {
+    position: relative;
+    top: 0;
+    right: 0;
+    width: 176px;
+}
+ul {
+    list-style: none;
+    margin: 22px 0;
+    padding: 0;
+}
+.list > li > a {
+    text-decoration: none;
+    color: black;
+    width: 100%;
+    height: 100%;
+}
+.list > li {
+    height: 40px;
+    width: 250px;
+}
+li:hover {
+    --tw-bg-opacity: 1;
+    background-color: rgb(233 235 238 / var(--tw-bg-opacity));
+}
+li {
+    text-decoration: none;
+}
+.bg-white {
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+    margin: 0px 500px;
+}
+.grid {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 50px;
+}
+.gap-y-2 {
+    row-gap: 0.5rem;
+    width: 200px;
+    color: rgb(144, 148, 156);
+    font-family: Helvetica Neue, Helvetica, Arial, lucida grande, tahoma,
+        verdana, arial, sans-serif;
+    height: 40px;
+}
+#main1 {
+    display: flex;
+    justify-content: center;
+    margin: 0 30%;
+    height: 100vh;
+}
+
+input {
+    width: 90%;
+    height: 40px;
+    border-radius: 10px;
+    margin: 5px;
+}
+.wrap {
+    background-color: #e0e0e0;
+    height: 100px;
+    border-radius: 10px;
+    margin: 10px;
+    width: 500px;
+}
+.wrap > p {
+    padding: 10px;
+}
+#form2 {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+}
+.btn123 {
+    width: 85%;
+    height: 40px;
+    border-radius: 10px;
+    margin: 5px;
+    background-color: rgb(30, 66, 159);
+    color: #e0e0e0;
+}
